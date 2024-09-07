@@ -1,31 +1,15 @@
 import request from '@/utils/request'
 
-// 获取借阅数量
-export function getCount() {
+// 分页查询收藏夹
+export function queryMarksByPage(params) {
     return request({
-        url: '/borrow/getCount',
-        method: 'get'
-    })
-}
-
-// 查询所有借阅信息
-export function queryBorrows() {
-    return request({
-        url: '/borrow/queryBorrows',
-        method: 'get'
-    })
-}
-
-// 分页查询借阅信息
-export function queryBorrowsByPage(params) {
-    return request({
-        url: '/borrow/queryBorrowsByPage',
+        url: '/mark/queryMarksByPage',
         method: 'get',
         params
     })
 }
 
-// 添加借阅信息
+// 添加收藏图书
 export function addBorrow(data) {
     return request({
         url: '/borrow/addBorrow',
@@ -34,53 +18,11 @@ export function addBorrow(data) {
     })
 }
 
-// 删除借阅信息
-export function deleteBorrow(data) {
+// 取消收藏
+export function deleteMark(data) {
     return request({
-        url: '/borrow/deleteBorrow',
+        url: '/mark/deleteMark',
         method: 'delete',
         data
-    })
-}
-
-//  删除一些借阅信息
-export function deleteBorrows(data) {
-    return request({
-        url: '/borrow/deleteBorrows',
-        method: 'delete',
-        data
-    })
-}
-
-//  更新借阅信息
-export function updateBorrow(data) {
-    return request({
-        url: '/borrow/updateBorrow',
-        method: 'put',
-        data
-    })
-}
-
-// 借书
-export function borrowBook(userid, bookid) {
-    return request({
-        url: '/mark/markBook',
-        method: 'post',
-        params: {
-            userid,
-            bookid
-        }
-    })
-}
-
-// 还书
-export function returnBook(borrowid, bookid) {
-    return request({
-        url: '/borrow/returnBook',
-        method: 'post',
-        params: {
-            borrowid,
-            bookid
-        }
     })
 }

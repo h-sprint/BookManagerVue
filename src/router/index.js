@@ -67,7 +67,18 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-
+  {
+    path: '/notice',
+    component: Layout,
+    redirect: '/notice',
+    children: [{
+      path: 'notice',
+      name: 'Notice',
+      component: () => import('@/views/notice/index'),
+      meta: { title: '公告栏', icon: 'link' },
+      roles: ['admin', 'reader']
+    }]
+  },
   {
     path: '/bookmanage',
     name: 'Bookmanage',
@@ -118,7 +129,7 @@ export const asyncRoutes = [
         component: () => import('@/views/favorites/index'),
         meta: {
           title: '收藏夹',
-          icon: 'favorites',
+          icon: 'form',
           roles: ['reader'],
           noCache: true
         }
